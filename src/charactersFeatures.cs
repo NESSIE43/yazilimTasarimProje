@@ -1,39 +1,119 @@
 using System;
 
-public class charactersFeatures
+public interface ICharacter
 {
-    public string name;
-    public string target;
-    public int health;
-    public int damage;
+  void Attack();
+}
 
-    public charactersFeatures(string name, string target, int health, int damage)
+public class Dusman : ICharacter
+{
+    public string target;
+    public int damage;
+    public int health;
+    public int armor;
+    public Dusman (string target, int damage,int health,int armor)
     {
-        this.name = name;
         this.target = target;
-        this.health = health;
         this.damage = damage;
+        this.health = health;
+        this.armor = armor;
     }
 
-    public void attack()
+    public void Attack()
     {
-        if(this.name == "Dusman")
+        Console.WriteLine("Dusman, " + target + " hedefine " + damage + " hasar verdi.");
+    }
+
+    public void TakeDamage(int damage)
+    {
+        int incomingDamage = damage - armor;
+        if (incomingDamage < 0)
         {
-            if(this.target == "Dost")
-            {
-                Console.WriteLine("Dusman Dost'a saldiriyor ve "+ this.damage +" hasar verdi.");
-            }
+            incomingDamage = 0;
         }
-        else if (this.name == "Dost")
-        {
-            if(this.target == "Dusman")
-            {
-                Console.WriteLine("Dost Dusman'a saldiriyor ve "+ this.damage +" hasar verdi.");
-            }
-        }
-        else if (this.name == "Obje")
-        {
-            Console.WriteLine("Obje saldiramaz.");
-        }
+        health -= incomingDamage;
+        Console.WriteLine("Dusman, " + incomingDamage + " hasar aldý. Kalan saðlýk: " + health);
     }
 }
+
+public class Dost : ICharacter
+{
+    public string target;
+    public int damage;
+    public int health;
+    public bool specialAbilityExist;
+
+    public Dost(string target, int damage, int health, bool specialAbilityExist)
+    {
+        this.target = target;
+        this.damage = damage;
+        this.health = health;
+        this.specialAbilityExist = specialAbilityExist;
+    }
+
+    public void Attack()
+    {
+        if (specialAbilityExist)
+        {
+            Console.WriteLine("Dost, " + target + " hedefine " + damage * 2 + " hasar verdi. Özel yeteneði kullandý ve *2 hasar verdi");
+        }
+        else
+        {
+            Console.WriteLine("Dost, " + target + " hedefine " + damage + " hasar verdi.");
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (specialAbilityExist)
+        {
+            Console.WriteLine("Dost, " + damage + " hasar aldý. Kalan saðlýk: " + health / 2 + ". Özel yeteneði kullandý ve /2 hasar aldi");
+        }
+        else
+        {
+            Console.WriteLine("Dost, " + damage + " hasar aldý. Kalan saðlýk: " + health);
+        }
+
+    }
+}
+
+public class Object : ICharacter
+{
+    public string name;
+    public float range;
+
+    public Object(string name, float range)
+        {
+            this.name = name;
+            this.range = range;
+    }
+
+
+    public void Attack()
+    {
+        Console.WriteLine("Nesne saldiramaz");
+    }
+
+}
+
+public class CharacterCreation
+{ 
+
+public ICharacter CreateDost(string target, int damage, int health, bool specialAbilityExist)
+{
+  return new Dost(target, damage, health, specialAbilityExist);
+
+}
+public ICharacter CreateDusman(string target, int damage, int health, int armor)
+{
+  return new Dusman(target, damage, health, armor);
+}
+
+public ICharacter CreateObject(string name, float range)
+{
+  return new Object(name, range);
+}
+
+
+
