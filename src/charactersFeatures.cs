@@ -114,6 +114,63 @@ public ICharacter CreateObject(string name, float range)
 {
   return new Object(name, range);
 }
+}
+
+
+public class EskiSistemUzayli
+{
+    public string isim;
+
+    public EskiSistemUzayli(string isim)
+    {
+        this.isim = isim;
+    }
+
+    public void atesEt()
+    {
+        Console.WriteLine(isim + " ateþ ediyor!");
+    }
+}
+
+public class UzayliAdapter : ICharacter
+{
+    private EskiSistemUzayli eskiSistemUzayli;
+    public UzayliAdapter(EskiSistemUzayli eskiUzayli)
+    {
+        this.eskiSistemUzayli = eskiUzayli;
+    }
+
+    public void Attack()
+    {
+        eskiSistemUzayli.atesEt();
+    }
+}
+
+
+public class CharacterDecorator : ICharacter
+{
+    protected ICharacter character;
+    public CharacterDecorator(ICharacter character)
+    {
+        this.character = character;
+    }
+    public virtual void Attack()
+    {
+        character.Attack();
+    }
+}
+
+public class ZehirliSaldiriDecorator : CharacterDecorator
+{
+    public ZehirliSaldiriDecorator(ICharacter character) : base(character)
+    {
+    }
+    public override void Attack()
+    {
+        base.Attack();
+        Console.WriteLine("Bu saldýrý zehir etkisi de içeriyor!");
+    }
+}
 
 
 
