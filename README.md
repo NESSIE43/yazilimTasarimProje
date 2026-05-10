@@ -18,6 +18,11 @@ Bu çalışma kapsamında, başlangıçta spagetti kod olan bir yapı; Creationa
 - **Strategy:** Karakterlerin saldırı türlerini (Kılıç, Ok vb.) dinamik olarak değiştirilebilir hale getirdik.
 - **Observer:** Karakter hasar aldığında UI ve Ses sistemlerinin otomatik olarak haberdar olmasını sağladık.
 
+## 💻 Nasıl Çalıştırılır?
+1. Projeyi bilgisayarınıza indirin.
+2. .NET SDK'nın yüklü olduğundan emin olun.
+3. "dotnet build" komutu ile derleyin.
+
 ## 📊 Mimari Diyagram
 
 ```mermaid
@@ -116,4 +121,3 @@ classDiagram
     IObserver <|.. SoundManager
     Dusman --> IObserver
     Dost --> IObserver
-
