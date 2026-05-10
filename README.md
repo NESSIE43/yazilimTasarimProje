@@ -2,23 +2,23 @@
 
 Bu proje, bir oyun motorundaki karakter ve saldırı sistemlerinin tasarım örüntüleri kullanılarak nasıl daha esnek ve geliştirilebilir hale getirildiğini göstermektedir.
 
-# Proje Hakkında
+## 🚀 Proje Hakkında
 Bu çalışma kapsamında, başlangıçta spagetti kod olan bir yapı; Creational, Structural ve Behavioral örüntüler uygulanarak SOLID prensiplerine uygun hale getirilmiştir.
 
-#  Kullanılan Tasarım Örüntüleri
+## 🛠 Kullanılan Tasarım Örüntüleri
 
-# Faz 1: Creational (Nesne Yaratma)
-- Factory Method: Karakter nesnelerinin (Dost, Dusman, Obje) yaratım süreçlerini merkezi bir sınıfa topladık.
+### Faz 1: Creational (Nesne Yaratma)
+- **Factory Method:** Karakter nesnelerinin (Dost, Dusman, Obje) yaratım süreçlerini merkezi bir sınıfa topladık.
 
-# Faz 2: Structural (Yapısal)
-- Decorator: Karakterlere çalışma zamanında arayüzü bozmadan yeni özellikler (Zehirli saldırı vb.) ekledik.
-- Adapter: Sisteme uyumsuz olan eski sınıf yapılarını mevcut arayüzümüze entegre ettik.
+### Faz 2: Structural (Yapısal)
+- **Decorator:** Karakterlere çalışma zamanında arayüzü bozmadan yeni özellikler (Zehirli saldırı vb.) ekledik.
+- **Adapter:** Sisteme uyumsuz olan eski sınıf yapılarını mevcut arayüzümüze entegre ettik.
 
-# Faz 3: Behavioral (Davranışsal)
-- Strategy: Karakterlerin saldırı türlerini (Kılıç, Ok vb.) dinamik olarak değiştirilebilir hale getirdik.
-- Observer: Karakter hasar aldığında UI ve Ses sistemlerinin otomatik olarak haberdar olmasını sağladık.
+### Faz 3: Behavioral (Davranışsal)
+- **Strategy:** Karakterlerin saldırı türlerini (Kılıç, Ok vb.) dinamik olarak değiştirilebilir hale getirdik.
+- **Observer:** Karakter hasar aldığında UI ve Ses sistemlerinin otomatik olarak haberdar olmasını sağladık.
 
-# Mimari Diyagram
+## 📊 Mimari Diyagram
 
 ```mermaid
 classDiagram
@@ -117,7 +117,3 @@ classDiagram
     Dusman --> IObserver
     Dost --> IObserver
 
-Nasıl Çalıştırılır?
-1. Projeyi bilgisayarınıza indirin.
-2. .NET SDK'nın yüklü olduğundan emin olun.
-3. "dotnet build" komutu ile derleyin.
